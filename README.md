@@ -6,11 +6,15 @@ I was responsible for the core **Admin Management Logic**. My work ensured the s
 * **Admin Dashboard:** Developed the logic for adding, deleting, and updating doctor profiles and specialties (`Admin_menu.py`).
 * **OOP Architecture:** Implemented foundational classes for Patients and Emergency services using inheritance.
 * **Data Integration:** Managed how specialty data is handled and displayed for administrators.
+* **System Integration:** Refactored the backend to ensure dynamic communication between the Admin module and the frontend scheduling system.
 
 ### Project Preview
-| Home Interface | Admin Control Panel |
-|---|---|
-| ![Home](home.png) | ![Admin](admin.png) |
+| Page | Description | Screenshot |
+| :--- | :--- | :--- |
+| **Home Page** | The welcoming interface of our clinic. | ![Home](home.png) |
+| **Specialties** | View of the 12 integrated medical departments. | ![Specialties](specialties.png) |
+| **Booking** | Real-time appointment scheduling with staff doctors. | ![Booking](book_appointment.png) |
+| **Admin Panel** | Secure dashboard for managing appointments and logs. | ![Admin](admin.png) |
 
 ### Technologies Used
 * **Backend:** Python (OOP Principles).
