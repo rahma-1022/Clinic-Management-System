@@ -432,5 +432,6 @@ class AdminSystem(patient, Emergency):
         if admin_found == False:
             print("There is no admin that has this id.")  
         
-d1=AdminSystem()
-d1.adminMenu()
+if __name__ == "__main__":
+    d1 = AdminSystem()
+    d1.adminMenu()

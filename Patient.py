@@ -216,5 +216,6 @@ class patient(Doctors):
                 print("Invalid input. Please enter a number between 1 and 4.")
 
 
-obj = patient() 
-obj.patientMenu()
+if __name__ == "__main__":
+    d1 = patient()
+    d1.patientMenu()

@@ -1,5 +1,5 @@
 import copy
-
+from Admin_menu import AdminSystem
 class ClinicData:
     doctors_by_specialty = {
         "Dermatology": ["Dr. Ahmed Mohamed", "Dr. Ali Ahmed"],
@@ -21,12 +21,30 @@ class ClinicData:
 
 class AppointmentManager:
     def __init__(self):
-        self.doctors_by_specialty = copy.deepcopy(ClinicData.doctors_by_specialty)
-        self.available_times = copy.deepcopy(ClinicData.available_times_initial)
+        self.admin_source = AdminSystem()
+        self.specialties = list(self.admin_source.specialties.values())
+        self.doctors_by_specialty = {}
+        for doc in self.admin_source.doctors_list:
+            spec = doc["specialty name"]
+            if spec not in self.doctors_by_specialty:
+                self.doctors_by_specialty[spec] = []
+            self.doctors_by_specialty[spec].append(doc["name"])
+            
+        self.available_times = {doc["name"]: ["09:00 AM", "11:00 AM", "02:00 PM"] for doc in self.admin_source.doctors_list}
+        
         self.appointments = []
         self.feedback = []
         self.emergency_logs = []
-        self.emergency_active = True 
+    # def __init__(self):
+    #     self.admin_source = AdminSystem()
+    #     self.doctors_by_specialty = self.admin_source.doctors_list
+    # def __init__(self):
+    #     self.doctors_by_specialty = copy.deepcopy(ClinicData.doctors_by_specialty)
+    #     self.available_times = copy.deepcopy(ClinicData.available_times_initial)
+    #     self.appointments = []
+    #     self.feedback = []
+    #     self.emergency_logs = []
+    #     self.emergency_active = True 
 
     def get_specialties(self):
         return list(self.doctors_by_specialty.keys())
