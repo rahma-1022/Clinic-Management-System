@@ -35,16 +35,6 @@ class AppointmentManager:
         self.appointments = []
         self.feedback = []
         self.emergency_logs = []
-    # def __init__(self):
-    #     self.admin_source = AdminSystem()
-    #     self.doctors_by_specialty = self.admin_source.doctors_list
-    # def __init__(self):
-    #     self.doctors_by_specialty = copy.deepcopy(ClinicData.doctors_by_specialty)
-    #     self.available_times = copy.deepcopy(ClinicData.available_times_initial)
-    #     self.appointments = []
-    #     self.feedback = []
-    #     self.emergency_logs = []
-    #     self.emergency_active = True 
 
     def get_specialties(self):
         return list(self.doctors_by_specialty.keys())

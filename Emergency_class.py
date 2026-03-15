@@ -55,18 +55,6 @@ class Emergency:
         )
         return "A nurse was successfully send"
 
-
-# if __name__ == "__main__":
-#     d1 = Emergency()
-#     d1.emergencyMenu()
-#     choice = input("If you want an ambulance enter number(1),if you want a nurse enter number(2)")
-# if choice == "1":
-#     print(Emergency.sendAmbulance())
-# elif choice == "2":
-#     print(Emergency.sendNurse())
-# else:
-#     print(" Incorrect choice")
-
 if __name__ == "__main__":
     emergency = Emergency()
     emergency.emergencyMenu()

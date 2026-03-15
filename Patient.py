@@ -40,17 +40,14 @@ class patient(Doctors):
     def bookAppointment(self):
         print ("\n   Enter patient info   ")
         
-        # 1. إدخال الاسم
         self.name = input("Enter patient name : ").strip()
         
-        # 2. إدخال الجنس والتحقق منه
         while True:
             self.gender = input("Enter Gender (Male/Female): ").strip().lower()
             if self.gender in ["male", "female"]:
                 break
             print(" Invalid input. Please enter 'Male' or 'Female'.")
         
-        # 3. إدخال العمر والتحقق منه
         while True:
             try:
                 age_input = input("Enter Age: ").strip()
@@ -61,12 +58,11 @@ class patient(Doctors):
             except ValueError:
                 print(" Invalid input. Please enter a valid number for age.")
         
-        # 4. إدخال رقم الهاتف 
+        
         self.phone = input("Enter Phone Number: ").strip()
         
         print(f"\n Patient {self.name} info recorded. Starting appointment selection...")
 
-        # 5. الانتقال لاختيار التخصص والطبيب (is_booking=True لتفعيل منطق الاختيار)
         self.choose_specialty(is_booking=True) 
 
     
@@ -90,7 +86,6 @@ class patient(Doctors):
                 
         print(f"\n You selected: {selected_specialty}")
         
-        # عرض الأطباء المتاحين في التخصص المختار
         available_doctors = self.doctor_list.get(selected_specialty, [])
         doctors_with_slots = {}
         
@@ -99,8 +94,6 @@ class patient(Doctors):
         doc_counter = 1
         for doc_name in available_doctors:
             
-        
-            # تنظيف الاسم مرة واحدة قبل البحث والعرض
             clean_name = doc_name
             slots = self.available_times.get(doc_name, [])
             
@@ -119,7 +112,6 @@ class patient(Doctors):
             print("\n  Note : To book, choose option '1' from the main menu.")
             return
         
-        # منطق اختيار الطبيب والموعد إذا كان حجزاً
         while True:
             doc_choice = input(f"Enter the number of the desired doctor (1 to {len(doctors_with_slots)}): ").strip()
             if doc_choice in doctors_with_slots:
@@ -131,7 +123,6 @@ class patient(Doctors):
         
         print(f"\n You selected: {selected_doctor_name}")
         
-        # اختيار الموعد
         print("\n  Available appointments  ")
         slot_map = {}
         for i, slot in enumerate(available_slots):
@@ -145,22 +136,18 @@ class patient(Doctors):
             if slot_choice in slot_map:
                 selected_time = slot_map[slot_choice]
 
-        # التحقق إن المعاد لسه متاح
             if selected_time not in self.available_times[selected_doctor_name]:
                 print("\n This appointment is already booked. Please choose another one.")
-                return  # يرجع علشان يبدأ الحجز من جديد
+                return  
 
-        # تسجيل الموعد
             self.appointment = {
             'doctor': selected_doctor_name,
             'time': selected_time,
             'specialty': selected_specialty
         }
 
-        # حذف المعاد من قائمة المتاح
             self.available_times[selected_doctor_name].remove(selected_time)
         
-          # حفظ الحجز
             patient.all_appointments.append({
               
               "patient": self.name,
@@ -201,11 +188,9 @@ class patient(Doctors):
             chosse = input("Enter num from 1 to 4: ").strip()
             
             if chosse == '1':
-                # عند اختيار 1، يتم استدعاء bookAppointment التي بدورها تستدعي choose_specialty(is_booking=True)
                 self.bookAppointment()
             
             elif chosse == '2':
-                # عند اختيار 2، يتم استدعاء choose_specialty(is_booking=False) لعرض التخصصات فقط
                 self.choose_specialty(is_booking=False)
             elif chosse == '3':
                 self.sendFeedback()
